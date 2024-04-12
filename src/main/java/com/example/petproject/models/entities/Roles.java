@@ -12,7 +12,7 @@ import java.util.List;
 })
 
 public class Roles extends BaseEntity {
-    List<Users> users;
+    List<User> user;
     private RoleEnum roleName;
 
     protected Roles() {
@@ -23,12 +23,11 @@ public class Roles extends BaseEntity {
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "role", cascade = CascadeType.REMOVE)
-    public List<Users> getUsers() {
-        return users;
+    public List<User> getUser() {
+        return user;
     }
-
-    public void setUsers(List<Users> users) {
-        this.users = users;
+    public void setUser(List<User> user) {
+        this.user = user;
     }
 
     @Enumerated(EnumType.STRING)

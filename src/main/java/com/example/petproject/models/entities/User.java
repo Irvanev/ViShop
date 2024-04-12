@@ -6,17 +6,25 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Users extends BaseEntity {
+@Table(name = "users")
+public class User extends BaseEntity {
     private List<Offers> offers;
     private Roles role;
-    private String email;
+    private String username;
     private String password;
+    private String confirmPassword;
     private String fullName;
     private Date birthday;
 
-    protected Users() {}
+    protected User() {}
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.REMOVE)
+    public User(String username, String password, String fullName) {
+        this.username = username;
+        this.password = password;
+        this.fullName = fullName;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.REMOVE)
     public List<Offers> getOffers() {
         return offers;
     }
@@ -33,14 +41,17 @@ public class Users extends BaseEntity {
         this.role = role;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
+    public String getPassword() {
+        return password;
+    }
     public void setPassword(String password) {
         this.password = password;
     }

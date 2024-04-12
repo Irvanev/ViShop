@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 public class Offers extends BaseEntity {
-    private Users users;
+    private User user;
     private Products products;
     private OfferEnum status;
 
@@ -13,12 +13,11 @@ public class Offers extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    public Users getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
-
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @ManyToOne
